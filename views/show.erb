@@ -6,5 +6,8 @@
 
   <h5>Task details:</h5>
   <p><%= @task['details'] %></p>
-  <a href="/tasks/<%= @task['id'] %>/edit">Edit Task</a>
-  <a href="/tasks">Return Home</a><a href="/tasks/"></a><br>
+  <a href="/tasks/<%= @task['id'] %>/edit">Edit Task</a><br>
+  <a href="/tasks">Return Home</a>
+  <form action="/tasks/<%= @task['id'] %>/delete" method='post'>
+    <button>Delete Task</button>
+  </form>
