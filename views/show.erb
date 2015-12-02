@@ -1,10 +1,10 @@
-<h1>Todo App</h1>
+<h1>Display Task</h1>
 
-<% @task.each do |task| %>
+<% @task %>
   <h5>Task name:</h5>
-  <p><%= task['name'] %></p> 
+  <p><%= @task['name'] %></p> 
 
   <h5>Task details:</h5>
-  <p><%= task['details'] %></p>
-  <a href="/tasks">Return Home</a>
-<% end %>
+  <p><%= @task['details'] %></p>
+  <a href="/tasks/<%= @task['id'] %>/edit">Edit Task</a>
+  <a href="/tasks">Return Home</a><a href="/tasks/"></a><br>

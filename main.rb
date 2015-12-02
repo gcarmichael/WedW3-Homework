@@ -30,16 +30,26 @@ end
 get '/tasks/:id' do
   # Grab task from DB where id = :id
   sql = "SELECT * FROM tasks WHERE id = #{params[:id]};"
-  @task = run_sql(sql)
+  @task = run_sql(sql).first
   erb :show
 end
 
 get '/tasks/:id/edit' do
   # Grab task from DB and render form to edit
+  sql = "SELECT * FROM tasks WHERE id = #{params[:id]};"
+  @task = run_sql(sql).first
+  erb :edit
 end
 
 post '/tasks/:id' do
   # Grab params and update in DB
+  name = params[:name]
+  details = params[:details]
+
+  sql = "UPDATE tasks SET name = '#{name}', details = '#{details}' WHERE id = #{params[:id]}"
+  run_sql(sql)
+
+  redirect to('/tasks')
 end
 
 post '/tasks/:id/delete' do
